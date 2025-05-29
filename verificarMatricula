@@ -1,0 +1,32 @@
+public static String verificarMatricula(String matricula) {
+    try {
+        
+        if (matricula == null || matricula.isEmpty()) {
+            return "Error: la matrícula no puede estar vacía o ser nula";
+        }
+
+        
+        if (matricula.length() != 6) {
+            return "Error: la matrícula debe tener exactamente 6 caracteres";
+        }
+
+        
+        String MparteAlfabetica = matricula.substring(0, 2).toUpperCase();
+        String MparteNumerica = matricula.substring(2);
+
+        
+        boolean validadorAlfabetico = MparteAlfabetica.matches("[A-Za-z]+");
+        boolean validadorNumerico = MparteNumerica.matches("\\d+");
+
+        if (validadorAlfabetico && validadorNumerico) {
+            return "Matrícula válida";
+        } else {
+            return "Error: formato inválido, deben ser 2 letras y 4 números";
+        }
+
+    } catch (StringIndexOutOfBoundsException e) {
+        return "Error: matrícula demasiado corta. Debe tener 6 caracteres.\n" + e;
+    } catch (Exception e) {
+        return "Error inesperado en verificarMatricula: " + e.getMessage() + "\n" + e;
+    }
+}
