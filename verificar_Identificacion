@@ -1,0 +1,20 @@
+public static String verificar_Identificacion(String dato_cedula) {
+    try {
+        
+        if (dato_cedula == null || dato_cedula.trim().isEmpty()) {
+            return "Error: la cédula no puede estar vacía o ser nula";
+        }
+
+        
+        boolean contenidoCC = dato_cedula.matches("^\\d{6,10}$");
+
+        if (contenidoCC) {
+            return "Número de cédula válido";
+        } else {
+            return "Error: la cédula debe tener entre 6 y 10 dígitos numéricos";
+        }
+
+    } catch (Exception e) {
+        return "Error en la función verificar_Identificacion: " + e.getMessage() + "\n" + e;
+    }
+}
