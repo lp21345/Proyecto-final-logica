@@ -1,0 +1,23 @@
+public static String validar_numero(String NumTelefono) {
+    try {
+        
+        if (NumTelefono == null || NumTelefono.trim().isEmpty()) {
+            return "Error: el número no puede estar vacío o ser nulo";
+        }
+
+        
+        if (NumTelefono.length() != 10) {
+            return "Error: el número debe tener exactamente 10 dígitos";
+        }
+
+        
+        if (!NumTelefono.matches("^3\\d{9}$")) {
+            return "Error: el número debe empezar con 3 y contener solo dígitos";
+        }
+
+        return "Número de teléfono válido";
+
+    } catch (Exception e) {
+        return "Error en la función validar_numero: " + e.getMessage() + "\n" + e;
+    }
+}
